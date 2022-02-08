@@ -12,7 +12,6 @@ dependencies:
   flutter:
     sdk: flutter
   ffi: ^1.0.0
-  isolate: ^2.0.3
 
 dev_dependencies:
   flutter_test:

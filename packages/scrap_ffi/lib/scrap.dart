@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'dart:ffi';
 import 'package:ffi/ffi.dart';
-import 'package:isolate/ports.dart';
 
 import 'ffi.dart' as native;
+
+import 'dart:isolate';
 
 class Scrap {
   static setup() {
@@ -11,10 +12,10 @@ class Scrap {
     print("Scrap Setup Done");
   }
 
-  Future<String> loadPage(String url) {
+  Future<String> loadPage(String url) async {
     var urlPointer = url.toNativeUtf8();
-    final completer = Completer<String>();
-    final sendPort = singleCompletePort(completer);
+    var receivePort = ReceivePort();
+    final sendPort = receivePort.sendPort;
     final res = native.load_page(
       sendPort.nativePort,
       urlPointer,
@@ -22,7 +23,9 @@ class Scrap {
     if (res != 1) {
       _throwError();
     }
-    return completer.future;
+    String response = await receivePort.first;
+    receivePort.close();
+    return response;
   }
 
   void _throwError() {

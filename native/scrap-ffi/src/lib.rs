@@ -7,11 +7,10 @@ use std::{ffi::CStr, io, os::raw};
 use tokio::runtime::{Builder, Runtime};
 
 lazy_static! {
-    static ref RUNTIME: io::Result<Runtime> = Builder::new()
-        .threaded_scheduler()
+    static ref RUNTIME: io::Result<Runtime> = Builder::new_multi_thread()
+        .worker_threads(4)
         .enable_all()
-        .core_threads(4)
-        .thread_name("flutterust")
+        .thread_name("tokio-pool")
         .build();
 }
 
@@ -32,7 +31,7 @@ macro_rules! error {
 
 macro_rules! cstr {
     ($ptr:expr) => {
-        cstr!($ptr, 0);
+        cstr!($ptr, 0)
     };
     ($ptr:expr, $error:expr) => {{
         null_pointer_check!($ptr);
