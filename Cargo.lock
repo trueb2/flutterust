@@ -25,6 +25,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "analysis"
+version = "0.1.0"
+
+[[package]]
+name = "analysis-ffi"
+version = "0.1.0"
+dependencies = [
+ "analysis",
+ "cbindgen",
+ "dart-bindgen",
+]
+
+[[package]]
 name = "ansi_term"
 version = "0.12.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -655,6 +668,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "runtime-ffi"
+version = "0.1.0"
+dependencies = [
+ "cbindgen",
+ "dart-bindgen",
+ "ffi_helpers",
+ "lazy_static",
+ "tokio",
+]
+
+[[package]]
 name = "rustls"
 version = "0.20.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -703,6 +727,7 @@ dependencies = [
  "dart-bindgen",
  "ffi_helpers",
  "lazy_static",
+ "runtime-ffi",
  "scrap",
  "tokio",
 ]

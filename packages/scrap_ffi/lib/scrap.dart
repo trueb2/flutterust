@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ffi';
 import 'package:ffi/ffi.dart';
+import 'package:runtime/runtime.dart';
 
 import 'ffi.dart' as native;
 
@@ -21,19 +22,10 @@ class Scrap {
       urlPointer,
     );
     if (res != 1) {
-      _throwError();
+      Runtime.throwRuntimeError();
     }
     String response = await receivePort.first;
     receivePort.close();
     return response;
-  }
-
-  void _throwError() {
-    final length = native.last_error_length();
-    final Pointer<Utf8> message = calloc.allocate(length);
-    native.error_message_utf8(message, length);
-    final error = message.toDartString();
-    print(error);
-    throw error;
   }
 }

@@ -1,10 +1,10 @@
 import Flutter
 import UIKit
 
-public class SwiftScrapPlugin: NSObject, FlutterPlugin {
+public class SwiftRuntimePlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "scrap", binaryMessenger: registrar.messenger())
-    let instance = SwiftScrapPlugin()
+    let channel = FlutterMethodChannel(name: "runtime", binaryMessenger: registrar.messenger())
+    let instance = SwiftRuntimePlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
@@ -13,6 +13,6 @@ public class SwiftScrapPlugin: NSObject, FlutterPlugin {
   }
 
   public static func dummyMethodToEnforceBundling() {
-    scrap_dummy_bind_symbol();
+    last_error_length()
   }
 }

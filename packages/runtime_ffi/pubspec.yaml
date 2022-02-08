@@ -1,4 +1,4 @@
-name: scrap
+name: runtime 
 description: A new flutter plugin project.
 version: 0.0.1
 author:
@@ -12,8 +12,6 @@ dependencies:
   flutter:
     sdk: flutter
   ffi: ^1.0.0
-  runtime:
-    path: ../runtime_ffi
 
 dev_dependencies:
   flutter_test:
@@ -23,7 +21,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.example.scrap
-        pluginClass: ScrapPlugin
+        package: com.example.runtime
+        pluginClass: RuntimePlugin
       ios:
-        pluginClass: ScrapPlugin
+        pluginClass: RuntimePlugin

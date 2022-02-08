@@ -1,6 +1,6 @@
 [env]
 CARGO_MAKE_EXTEND_WORKSPACE_MAKEFILE = true
-CARGO_MAKE_WORKSPACE_INCLUDE_MEMBERS = ["native/adder-ffi", "native/scrap-ffi"]
+CARGO_MAKE_WORKSPACE_INCLUDE_MEMBERS = ["native/adder-ffi", "native/scrap-ffi", "native/runtime-ffi"]
 ANDROID_PLATFORM_VERSION = "28"
 LIB_OUT_DIR = "debug"
 TARGET_OS = "unknown"
@@ -53,7 +53,7 @@ disabled = true
 [tasks.ios]
 description = "build iOS targets"
 category = "Build"
-dependencies = ["ios-release", "post-ios"]
+dependencies = ["ios-build", "ios-release", "post-ios"]
 
 [tasks.ios-build]
 condition = { platforms = ["mac"], env_true = ["DEV"] }

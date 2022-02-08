@@ -7,9 +7,11 @@
 extern "C" {
 #endif // __cplusplus
 
-int32_t scrap_dummy_bind_symbol(void);
+int32_t runtime_setup(void);
 
-int32_t load_page(int64_t port, const char *url);
+int32_t last_error_length(void);
+
+int32_t error_message_utf8(char *buf, int32_t length);
 
 #ifdef __cplusplus
 } // extern "C"

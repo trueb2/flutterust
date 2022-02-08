@@ -14,31 +14,6 @@ DynamicLibrary _open() {
   throw UnsupportedError('This platform is not supported.');
 }
 
-/// C function `error_message_utf8`.
-int error_message_utf8(
-  Pointer<ffi.Utf8> buf,
-  int length,
-) {
-  return _error_message_utf8(buf, length);
-}
-final _error_message_utf8_Dart _error_message_utf8 = _dl.lookupFunction<_error_message_utf8_C, _error_message_utf8_Dart>('error_message_utf8');
-typedef _error_message_utf8_C = Int32 Function(
-  Pointer<ffi.Utf8> buf,
-  Int32 length,
-);
-typedef _error_message_utf8_Dart = int Function(
-  Pointer<ffi.Utf8> buf,
-  int length,
-);
-
-/// C function `last_error_length`.
-int last_error_length() {
-  return _last_error_length();
-}
-final _last_error_length_Dart _last_error_length = _dl.lookupFunction<_last_error_length_C, _last_error_length_Dart>('last_error_length');
-typedef _last_error_length_C = Int32 Function();
-typedef _last_error_length_Dart = int Function();
-
 /// C function `load_page`.
 int load_page(
   int port,
@@ -55,6 +30,14 @@ typedef _load_page_Dart = int Function(
   int port,
   Pointer<ffi.Utf8> url,
 );
+
+/// C function `scrap_dummy_bind_symbol`.
+int scrap_dummy_bind_symbol() {
+  return _scrap_dummy_bind_symbol();
+}
+final _scrap_dummy_bind_symbol_Dart _scrap_dummy_bind_symbol = _dl.lookupFunction<_scrap_dummy_bind_symbol_C, _scrap_dummy_bind_symbol_Dart>('scrap_dummy_bind_symbol');
+typedef _scrap_dummy_bind_symbol_C = Int32 Function();
+typedef _scrap_dummy_bind_symbol_Dart = int Function();
 
 /// Binding to `allo-isolate` crate
 void store_dart_post_cobject(

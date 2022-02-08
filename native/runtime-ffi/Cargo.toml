@@ -1,19 +1,16 @@
 [package]
-name = "scrap-ffi"
+name = "runtime-ffi"
 version = "0.1.0"
 authors = ["Shady Khalifa <shekohex@gmail.com>"]
 edition = "2018"
 
 [lib]
-name = "scrap_ffi"
+name = "runtime_ffi"
 crate-type = ["rlib"]
 
 [dependencies]
-scrap = { path = "../scrap" }
-runtime-ffi = { path = "../runtime-ffi" }
 tokio = { version = "1.16.1", features = ["full"] }
 ffi_helpers = "0.3.0"
-allo-isolate = "0.1.12"
 lazy_static = "1.4.0"
 
 [build-dependencies]
